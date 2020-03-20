@@ -5,19 +5,18 @@
 
 <body>
 <nav>
-  <h1>Multiply Application</h1>
+  <h1>Higher or Lower Game</h1>
+  <p>I'm thinking of a number between 1 and 100</p>
+  <p>Enter your guess below and I will tell you if you guess is too high or too low</p>
 </nav>
 
 
 {% block content %}
   <form method="post">
-    <label for="a">A:</label>
-    <input name="a" id="a" value="{{ t['a'] }}" required><br>
-    <label for="b">B:</label>
-    <input name="b" id="b" value="{{ t['b'] }}" required> <br>
-    <label for="b">A*B=</label>
-    <input name="c" id="c" value="{{ t['c'] }}"> <br>
-    <input type="submit" value="Multiply!">
+    <label for="userGuess">Your Guess:</label>
+    <input name="userGuess" id="userGuess" value="{{ userGuess }}" required><br>
+    <input type="submit" value="Check Guess">
+    {{response}}
   </form>
 {% endblock %}
 

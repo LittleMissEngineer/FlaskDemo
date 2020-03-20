@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link rel = "stylesheet" href = "windchill.css">
+</head>
+
+<body>
+<nav>
+  <h1>Wind Chill Calculator</h1>
+</nav>
+
+
+{% block content %}
+  <form method="post">
+    <label for="temp">Temp:</label>
+    <input name="temp" id="temp" value="{{temp}}" required><br>
+
+    <label for="speed">Speed:</label>
+    <input name="speed" id="speed" value="{{speed}}" required><br>
+
+    <input type="submit" value="Calculate">
+  </form>
+
+  Results: Windchill = {{windchill}} <br>
+{% endblock %}
+
+<p>You have used this page {{ times }} times</p>
+
+<a href="{{ url_for('logout') }}">Reset Session</a>
+
+</body>
