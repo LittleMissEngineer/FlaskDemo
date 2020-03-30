@@ -10,36 +10,43 @@ app.config.from_mapping(SECRET_KEY='devIAm')  # Needed for session tracking
 
 @app.route('/', methods=['GET','POST'])
 
+
+
 def game():
-  secret_number = random.randrange(1,100)
-  response = ""
-  lower = "Your guess is too low"
-  higher = "You guess is too high"
-  correct = "Congrats! You have guessed correctly!"
-
-  if 'userGuess' in request.args:
-    userGuess = int(input('userGuess'))
-
-    if userGuess > secret_number:
-     response = lower
-
-    elif userGuess < secret_number:
-         response = higher
-
-    else:
-      response = correct
-
-
-  userGuess = request.form['userGuess']
-    
+  t = {'currentGuess': 0}
   
+  #if request.method == 'POST':
+   # currentGuess = request.form['userGuess']
+
+  if 'currentGuess' in request.args:
+   t['currentGuess'] = request.args.get('currentGuess')
+
+  secret_number = random.randint(1,101)
+  response = ""
+
+#loop to determine if input is higher or lower
+
+  if secret_number > int(t['currentGuess']) :
+    response = "Your guess is too low"
+
+  elif secret_number < int(t['currentGuess']) :
+      response = "Your guess is too high"
+
+  else:
+     response = "Congratulations! Your guess is correct"
+
+
+  
+
+
+
   # Update the number of visits
   # session is a dict which persists.  Stored in client cookie (no local storage)
   if 'times' not in session:
     session['times'] = 0
   session['times'] += 1
 
-  return render_template('index.html',times = session['times'] , response = response , lower= lower , higher = higher , correct = correct) # Send t to the template
+  return render_template('index.html',t = t,times = session['times'], response = response ) # Send t to the template
 
 @app.route('/logout')
 def logout():

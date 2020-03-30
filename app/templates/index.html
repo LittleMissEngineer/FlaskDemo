@@ -13,10 +13,9 @@
 
 {% block content %}
   <form method="post">
-    <label for="userGuess">Your Guess:</label>
-    <input name="userGuess" id="userGuess" value="{{ userGuess }}" required><br>
-    <input type="submit" value="Check Guess">
-    {{response}}
+    <label>Your Guess:</label>
+    <input name="text_box" id = "currentGuess" value="{{ t['currentGuess'] }}" required><br>
+    <input type="submit" value="Check_Guess">
   </form>
 {% endblock %}
 
