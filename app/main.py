@@ -10,10 +10,11 @@ app.config.from_mapping(SECRET_KEY='devIAm')  # Needed for session tracking
 
 @app.route('/', methods=['GET','POST'])
 
-
-
 def game():
   t = {'currentGuess': 0}
+  secret_number = random.randint(1,101)
+  print(secret_number)
+  response = ""
   
   #if request.method == 'POST':
    # currentGuess = request.form['userGuess']
@@ -21,9 +22,7 @@ def game():
   if 'currentGuess' in request.args:
    t['currentGuess'] = request.args.get('currentGuess')
 
-  secret_number = random.randint(1,101)
-  response = ""
-
+  
 #loop to determine if input is higher or lower
 
   if secret_number > int(t['currentGuess']) :
