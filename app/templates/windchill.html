@@ -15,9 +15,9 @@
     <label for="temp">Temp:</label>
     <input name="temp" id="temp" value="{{temp}}" required><br>
     <div name = "temp_type">
-    <input type = "radio" id ="c">
+    <input type = "radio" id ="c" value = "c" name = "temp_option">
     <label for="c">C</label><br>
-    <input type = "radio" id ="f">
+    <input type = "radio" id ="f" value = "f" name = "temp_option">
     <label for="f">F</label><br>
     </div>
    
@@ -25,17 +25,17 @@
     <label for="speed">Speed:</label>
     <input name="speed" id="speed" value="{{speed}}" required><br>
     <div name = "type_of_speed">
-    <input type = "radio" id ="mph">
+    <input type = "radio" id ="mph" value = "mph" name = "speed_option">
     <label for="mph">MPH</label><br>
-    <input type = "radio" id ="kph">
+    <input type = "radio" id ="kph" value = "kph" name = "speed_option">
     <label for="kph">KPH</label><br>
     </div>
     <br>
 
-    <input type="submit" value="Calculate">
+    <input type="submit" name = "submit_button" value="Calculate">
   </form>
 
-  Results: Windchill = {{windchill}} <br>
+  Results: Windchill = {{windChill}} <br>
 {% endblock %}
 
 <p>You have used this page {{ times }} times</p>
